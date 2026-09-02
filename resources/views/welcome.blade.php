@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Evolusi PL - Homepage</title>
+    <meta name="description" content="Tugas Evolusi dan Konstruksi PL 2026">
     <style>
         body {
             font-family: system-ui, sans-serif;
