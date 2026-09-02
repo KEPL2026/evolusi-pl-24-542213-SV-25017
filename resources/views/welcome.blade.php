@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Evolusi PL - Homepage</title>
     <meta name="description" content="Tugas Evolusi dan Konstruksi PL 2026">
+    <p style="position: fixed; bottom: 10px; font-size: 12px; color: #555;">Dibuat untuk Evolusi & Konstruksi PL 2026</p>
     <style>
         body {
             font-family: system-ui, sans-serif;
