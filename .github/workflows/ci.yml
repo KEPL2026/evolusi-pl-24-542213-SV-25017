@@ -1,0 +1,52 @@
+name: CI
+ 
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+ 
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+ 
+      - name: Copy .env
+        run: cp .env.example .env
+ 
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress
+ 
+      - name: Generate app key
+        run: php artisan key:generate
+ 
+      - name: Run tests
+        run: php artisan test
+ 
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+ 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+ 
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-progress
+ 
+      - name: Check PHP syntax
+        run: find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
